@@ -1,0 +1,184 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Therapeutic Drawing - Express Yourself</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/style.css') }}">
+    <link href="https://fonts.googleapis.com/css2?family=Caveat:wght@400;700&family=Poppins:wght@300;400;600&display=swap" rel="stylesheet">
+</head>
+<body>
+    <!-- Header Section -->
+    <header class="hero-section">
+        <div class="container">
+            <h1 class="hand-drawn-title">WANNA ASK ABOUT SOMETHING ELSE?</h1>
+            <p class="subtitle">Feel free and we will respond at any time<br>of the day or night, any day of the week</p>
+            <a href="#canvas-section" class="cta-button">TEXT US</a>
+        </div>
+        <div class="header-illustration">
+            <img src="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 200 200'%3E%3Cpath fill='%23e74c3c' d='M100 30 L120 80 L100 70 L80 80 Z'/%3E%3Crect x='60' y='80' width='80' height='100' fill='%235b8ba8' stroke='%23fff' stroke-width='3'/%3E%3C/svg%3E" alt="Envelope">
+        </div>
+    </header>
+
+    <!-- Canvas Drawing Section -->
+    <section id="canvas-section" class="canvas-section">
+        <div class="container">
+            <div class="canvas-container">
+                <h2 class="section-title">Express Yourself Through Art</h2>
+                <p class="section-subtitle">Let your creativity flow freely. There are no mistakes in art! ✨</p>
+                
+                <!-- Drawing Tools -->
+                <div class="tools-panel">
+                    <div class="tool-group">
+                        <label>Brush Size:</label>
+                        <input type="range" id="brushSize" min="1" max="20" value="3">
+                        <span id="brushSizeValue">3</span>
+                    </div>
+                    
+                    <div class="tool-group">
+                        <label>Color:</label>
+                        <div class="color-palette">
+                            <button class="color-btn active" data-color="#000000" style="background: #000000;"></button>
+                            <button class="color-btn" data-color="#e74c3c" style="background: #e74c3c;"></button>
+                            <button class="color-btn" data-color="#3498db" style="background: #3498db;"></button>
+                            <button class="color-btn" data-color="#2ecc71" style="background: #2ecc71;"></button>
+                            <button class="color-btn" data-color="#f39c12" style="background: #f39c12;"></button>
+                            <button class="color-btn" data-color="#9b59b6" style="background: #9b59b6;"></button>
+                            <button class="color-btn" data-color="#e91e63" style="background: #e91e63;"></button>
+                            <button class="color-btn" data-color="#00bcd4" style="background: #00bcd4;"></button>
+                        </div>
+                    </div>
+                    
+                    <div class="tool-group">
+                        <button id="clearBtn" class="action-btn">Clear Canvas</button>
+                        <button id="analyzeBtn" class="action-btn primary">Get Feedback</button>
+                    </div>
+                </div>
+
+                <!-- Drawing Canvas -->
+                <canvas id="drawingCanvas"></canvas>
+            </div>
+        </div>
+    </section>
+
+    <!-- Feedback Section -->
+    <section class="feedback-section">
+        <div class="container">
+            <div id="feedbackCard" class="feedback-card hidden">
+                <div class="feedback-content">
+                    <h3 class="hand-drawn-subtitle">Your Artistic Journey</h3>
+                    <p id="feedbackMessage" class="feedback-message"></p>
+                    <p id="encouragementMessage" class="encouragement"></p>
+                    <div class="therapeutic-tip">
+                        <strong>💡 Did you know?</strong>
+                        <p id="therapeuticTip"></p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Info Section -->
+    <section class="info-section">
+        <div class="container">
+            <div class="info-card">
+                <h2 class="hand-drawn-subtitle">84% OF ASHY USERS NOTED<br>AN IMPROVEMENT AFTER THE 5TH<br>SESSION. YOU CAN DO IT TOO</h2>
+                
+                <div class="illustration-container">
+                    <svg class="flowers-illustration" viewBox="0 0 600 200" xmlns="http://www.w3.org/2000/svg">
+                        <!-- Grass -->
+                        <g fill="#2ecc71">
+                            <rect x="0" y="170" width="600" height="30" opacity="0.3"/>
+                            <path d="M 20 180 Q 25 160 30 180" stroke="#27ae60" fill="none" stroke-width="2"/>
+                            <path d="M 100 185 Q 105 165 110 185" stroke="#27ae60" fill="none" stroke-width="2"/>
+                            <path d="M 180 175 Q 185 155 190 175" stroke="#27ae60" fill="none" stroke-width="2"/>
+                            <path d="M 420 180 Q 425 160 430 180" stroke="#27ae60" fill="none" stroke-width="2"/>
+                            <path d="M 500 185 Q 505 165 510 185" stroke="#27ae60" fill="none" stroke-width="2"/>
+                        </g>
+                        
+                        <!-- Flowers -->
+                        <g class="flower">
+                            <line x1="80" y1="100" x2="80" y2="170" stroke="#27ae60" stroke-width="4"/>
+                            <circle cx="80" cy="100" r="15" fill="#3498db" opacity="0.7"/>
+                            <circle cx="80" cy="100" r="8" fill="#f39c12"/>
+                        </g>
+                        
+                        <g class="flower">
+                            <line x1="160" y1="110" x2="160" y2="170" stroke="#27ae60" stroke-width="4"/>
+                            <circle cx="160" cy="110" r="14" fill="#e74c3c" opacity="0.7"/>
+                            <circle cx="160" cy="110" r="7" fill="#f39c12"/>
+                        </g>
+                        
+                        <g class="flower">
+                            <line x1="380" y1="95" x2="380" y2="170" stroke="#27ae60" stroke-width="4"/>
+                            <circle cx="380" cy="95" r="16" fill="#3498db" opacity="0.7"/>
+                            <circle cx="380" cy="95" r="8" fill="#f39c12"/>
+                        </g>
+                        
+                        <g class="flower">
+                            <line x1="460" y1="105" x2="460" y2="170" stroke="#27ae60" stroke-width="4"/>
+                            <circle cx="460" cy="105" r="15" fill="#e91e63" opacity="0.7"/>
+                            <circle cx="460" cy="105" r="7" fill="#f39c12"/>
+                        </g>
+                        
+                        <!-- Bear -->
+                        <g class="bear">
+                            <ellipse cx="300" cy="140" rx="35" ry="45" fill="#f5deb3" stroke="#d4a574" stroke-width="2"/>
+                            <circle cx="285" cy="125" r="8" fill="#f5deb3" stroke="#d4a574" stroke-width="2"/>
+                            <circle cx="315" cy="125" r="8" fill="#f5deb3" stroke="#d4a574" stroke-width="2"/>
+                            <circle cx="295" cy="130" r="3" fill="#333"/>
+                            <circle cx="305" cy="130" r="3" fill="#333"/>
+                            <path d="M 295 138 Q 300 142 305 138" stroke="#333" fill="none" stroke-width="2"/>
+                            <path d="M 290 155 L 300 165 L 310 155" fill="#e74c3c"/>
+                        </g>
+                    </svg>
+                </div>
+                
+                <a href="#canvas-section" class="find-link">FIND A PSYCHOLOGIST</a>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer class="footer">
+        <div class="container">
+            <div class="footer-content">
+                <div class="footer-column">
+                    <p class="footer-disclaimer">Warning: In case of acute manifestations<br>of depression or other disorders, please<br>contact one of these clinics</p>
+                </div>
+                <div class="footer-column">
+                    <h4>Catalog</h4>
+                    <ul>
+                        <li>Certificates</li>
+                        <li>For psychologists</li>
+                        <li>About us</li>
+                        <li>Cases</li>
+                    </ul>
+                </div>
+                <div class="footer-column">
+                    <h4>Articles</h4>
+                    <ul>
+                        <li>About</li>
+                        <li>Tests</li>
+                        <li>Burnout</li>
+                        <li>Procrastination</li>
+                        <li>Communication problems</li>
+                    </ul>
+                </div>
+                <div class="footer-column">
+                    <div class="social-icons">
+                        <span>💬</span>
+                        <span>✈️</span>
+                        <span>📱</span>
+                    </div>
+                </div>
+            </div>
+            <div class="footer-brand">
+                <h2>ashy</h2>
+            </div>
+        </div>
+    </footer>
+
+    <script src="{{ url_for('static', filename='js/canvas.js') }}"></script>
+</body>
+</html>
